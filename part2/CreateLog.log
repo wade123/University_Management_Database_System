@@ -1,0 +1,215 @@
+[5, 17:39:51] DROP TABLE IF EXISTS `Course`: Running...
+[5, 17:39:51] DROP TABLE IF EXISTS `Course`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.course'
+[6, 17:39:51] CREATE TABLE Course(
+	CourseID INT,
+	Title VARCHAR(50),
+	Credit INT,
+	ProfUIN INT,
+	PRIMARY KEY (CourseID)
+): Running...
+[6, 17:39:51] CREATE TABLE Course(
+	CourseID INT,
+	Title VARCHAR(50),
+	Credit INT,
+	ProfUIN INT,
+	PRIMARY KEY (CourseID)
+): 0 row(s) affected
+[7, 17:39:51] DROP TABLE IF EXISTS `Department`: Running...
+[7, 17:39:51] DROP TABLE IF EXISTS `Department`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.department'
+[8, 17:39:51] CREATE TABLE Deparment(
+	Abbreviation VARCHAR(10),
+	Name VARCHAR(50),
+	FoundDate DATE,
+	Website VARCHAR(50),
+	PRIMARY KEY(Abbreviation)
+): Running...
+[8, 17:39:51] CREATE TABLE Deparment(
+	Abbreviation VARCHAR(10),
+	Name VARCHAR(50),
+	FoundDate DATE,
+	Website VARCHAR(50),
+	PRIMARY KEY(Abbreviation)
+): 0 row(s) affected
+[9, 17:39:51] DROP TABLE IF EXISTS `Professor`: Running...
+[9, 17:39:51] DROP TABLE IF EXISTS `Professor`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.professor'
+[10, 17:39:51] CREATE TABLE Professor(
+	UIN INT,
+	Name VARCHAR(20),
+	Title VARCHAR(20),
+	Nationality VARCHAR(20),
+	Interest VARCHAR(50),
+	OfficeNo VARCHAR(10),
+	Phone	INT,
+	Webpage VARCHAR(50),
+	PRIMARY KEY(UIN)
+): Running...
+[10, 17:39:52] CREATE TABLE Professor(
+	UIN INT,
+	Name VARCHAR(20),
+	Title VARCHAR(20),
+	Nationality VARCHAR(20),
+	Interest VARCHAR(50),
+	OfficeNo VARCHAR(10),
+	Phone	INT,
+	Webpage VARCHAR(50),
+	PRIMARY KEY(UIN)
+): 0 row(s) affected
+[11, 17:39:52] DROP TABLE IF EXISTS `Student`: Running...
+[11, 17:39:52] DROP TABLE IF EXISTS `Student`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.student'
+[12, 17:39:52] CREATE TABLE Student(
+	UIN INT,
+	Name VARCHAR(20),
+	BirthYear INT,
+	Nationality VARCHAR(20),
+	Gender CHAR(1),
+	Phone INT,
+	Email VARCHAR(20),
+	Major VARCHAR(20),
+	ProfUIN INT,
+	PRIMARY KEY(UIN)
+): Running...
+[12, 17:39:52] CREATE TABLE Student(
+	UIN INT,
+	Name VARCHAR(20),
+	BirthYear INT,
+	Nationality VARCHAR(20),
+	Gender CHAR(1),
+	Phone INT,
+	Email VARCHAR(20),
+	Major VARCHAR(20),
+	ProfUIN INT,
+	PRIMARY KEY(UIN)
+): 0 row(s) affected
+[13, 17:39:52] DROP TABLE IF EXISTS `Facultyof`: Running...
+[13, 17:39:52] DROP TABLE IF EXISTS `Facultyof`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.facultyof'
+[14, 17:39:52] CREATE TABLE `Facultyof` (
+  `Prof_UIN` int(11) NOT NULL DEFAULT '0',
+  `Department` varchar(10) NOT NULL DEFAULT '',
+  `Start_Date` date DEFAULT NULL,
+  `End_Date` date DEFAULT NULL,
+  `Salary` double DEFAULT NULL,
+  PRIMARY KEY (`Prof_UIN`,`Department`)
+): Running...
+[14, 17:39:52] CREATE TABLE `Facultyof` (
+  `Prof_UIN` int(11) NOT NULL DEFAULT '0',
+  `Department` varchar(10) NOT NULL DEFAULT '',
+  `Start_Date` date DEFAULT NULL,
+  `End_Date` date DEFAULT NULL,
+  `Salary` double DEFAULT NULL,
+  PRIMARY KEY (`Prof_UIN`,`Department`)
+): 0 row(s) affected
+[15, 17:39:52] DROP TABLE IF EXISTS `GroupLeader`: Running...
+[15, 17:39:52] DROP TABLE IF EXISTS `GroupLeader`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.groupleader'
+[16, 17:39:52] CREATE TABLE `groupleader` (
+  `Prof_UIN` int(11) NOT NULL DEFAULT '0',
+  `Title` varchar(20) DEFAULT NULL,
+  `JobSummary` varchar(100) DEFAULT NULL,
+  `StartDate` date DEFAULT NULL,
+  PRIMARY KEY (`Prof_UIN`)
+): Running...
+[16, 17:39:52] CREATE TABLE `groupleader` (
+  `Prof_UIN` int(11) NOT NULL DEFAULT '0',
+  `Title` varchar(20) DEFAULT NULL,
+  `JobSummary` varchar(100) DEFAULT NULL,
+  `StartDate` date DEFAULT NULL,
+  PRIMARY KEY (`Prof_UIN`)
+): 0 row(s) affected
+[17, 17:39:52] DROP TABLE IF EXISTS `RegisterIn`: Running...
+[17, 17:39:52] DROP TABLE IF EXISTS `RegisterIn`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.registerin'
+[18, 17:39:52] CREATE TABLE `registerIn` (
+  `ClubName` varchar(20) NOT NULL DEFAULT '',
+  `StudentUIN` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ClubName`,`StudentUIN`)
+): Running...
+[18, 17:39:52] CREATE TABLE `registerIn` (
+  `ClubName` varchar(20) NOT NULL DEFAULT '',
+  `StudentUIN` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ClubName`,`StudentUIN`)
+): 0 row(s) affected
+[19, 17:39:52] DROP TABLE IF EXISTS `Paper`: Running...
+[19, 17:39:52] DROP TABLE IF EXISTS `Paper`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.paper'
+[20, 17:39:52] CREATE TABLE `Paper` (
+  `ISBN` int(11) NOT NULL DEFAULT '0',
+  `Title` varchar(50) DEFAULT NULL,
+  `PublishDate` date DEFAULT NULL,
+  `Genre` varchar(10) DEFAULT NULL,
+  `Publisher` varchar(20) DEFAULT NULL,
+  `Page` int(11) DEFAULT NULL,
+  `Cited` int(11) DEFAULT NULL,
+  `StudUIN` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ISBN`,`StudUIN`)
+): Running...
+[20, 17:39:53] CREATE TABLE `Paper` (
+  `ISBN` int(11) NOT NULL DEFAULT '0',
+  `Title` varchar(50) DEFAULT NULL,
+  `PublishDate` date DEFAULT NULL,
+  `Genre` varchar(10) DEFAULT NULL,
+  `Publisher` varchar(20) DEFAULT NULL,
+  `Page` int(11) DEFAULT NULL,
+  `Cited` int(11) DEFAULT NULL,
+  `StudUIN` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ISBN`,`StudUIN`)
+): 0 row(s) affected
+[21, 17:39:53] DROP TABLE IF EXISTS `Club`: Running...
+[21, 17:39:53] DROP TABLE IF EXISTS `Club`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.club'
+[22, 17:39:53] CREATE TABLE `Club` (
+  `Name` varchar(20) NOT NULL DEFAULT '',
+  `ChairName` varchar(20) DEFAULT NULL,
+  `FoundDate` date DEFAULT NULL,
+  `Website` varchar(50) DEFAULT NULL,
+  `Capacity` int(11) DEFAULT NULL,
+  `AnnualFee` double DEFAULT NULL,
+  PRIMARY KEY (`Name`)
+): Running...
+[22, 17:39:53] CREATE TABLE `Club` (
+  `Name` varchar(20) NOT NULL DEFAULT '',
+  `ChairName` varchar(20) DEFAULT NULL,
+  `FoundDate` date DEFAULT NULL,
+  `Website` varchar(50) DEFAULT NULL,
+  `Capacity` int(11) DEFAULT NULL,
+  `AnnualFee` double DEFAULT NULL,
+  PRIMARY KEY (`Name`)
+): 0 row(s) affected
+[23, 17:39:53] DROP TABLE IF EXISTS `studyof`: Running...
+[23, 17:39:53] DROP TABLE IF EXISTS `studyof`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.studyof'
+[24, 17:39:53] CREATE TABLE `studyof` (
+  `CourseID` int(11) NOT NULL DEFAULT '0',
+  `UIN` int(11) NOT NULL DEFAULT '0',
+  `Score` double DEFAULT NULL,
+  PRIMARY KEY (`CourseID`,`UIN`)
+): Running...
+[24, 17:39:53] CREATE TABLE `studyof` (
+  `CourseID` int(11) NOT NULL DEFAULT '0',
+  `UIN` int(11) NOT NULL DEFAULT '0',
+  `Score` double DEFAULT NULL,
+  PRIMARY KEY (`CourseID`,`UIN`)
+): 0 row(s) affected
+[25, 17:39:53] DROP TABLE IF EXISTS `CommitteGroup`: Running...
+[25, 17:39:53] DROP TABLE IF EXISTS `CommitteGroup`: 0 row(s) affected, 1 warning(s):
+1051 Unknown table 'project.committegroup'
+[26, 17:39:53] CREATE TABLE `CommitteGroup` (
+  `StudUIN` int(11) NOT NULL DEFAULT '0',
+  `ChairUIN` int(11) NOT NULL DEFAULT '0',
+  `CochairUIN` int(11) NOT NULL DEFAULT '0',
+  `DefenseDate` date DEFAULT NULL,
+  `Passed` char(1) DEFAULT NULL,
+  PRIMARY KEY (`StudUIN`,`ChairUIN`,`CochairUIN`)
+): Running...
+[26, 17:39:53] CREATE TABLE `CommitteGroup` (
+  `StudUIN` int(11) NOT NULL DEFAULT '0',
+  `ChairUIN` int(11) NOT NULL DEFAULT '0',
+  `CochairUIN` int(11) NOT NULL DEFAULT '0',
+  `DefenseDate` date DEFAULT NULL,
+  `Passed` char(1) DEFAULT NULL,
+  PRIMARY KEY (`StudUIN`,`ChairUIN`,`CochairUIN`)
+): 0 row(s) affected

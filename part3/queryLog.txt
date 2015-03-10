@@ -1,0 +1,270 @@
+Small Database:
+
+[207, 22:35:41] SELECT CourseID
+FROM studyof
+WHERE UIN IN (SELECT UIN
+			  FROM student
+			  WHERE ProfUIN IN(SELECT UIN
+							   FROM professor
+							   WHERE Nationality='America')): Running...
+[207, 22:35:41] SELECT CourseID
+FROM studyof
+WHERE UIN IN (SELECT UIN
+			  FROM student
+			  WHERE ProfUIN IN(SELECT UIN
+							   FROM professor
+							   WHERE Nationality='America')): Fetching...
+[207, 22:35:41] SELECT CourseID
+FROM studyof
+WHERE UIN IN (SELECT UIN
+			  FROM student
+			  WHERE ProfUIN IN(SELECT UIN
+							   FROM professor
+							   WHERE Nationality='America')): 3 row(s) returned
+[208, 22:35:57] SELECT ClubName
+FROM registerIn
+WHERE StudentUIN IN (SELECT UIN 
+										 FROM studyof
+										 WHERE CourseID LIKE 'CSCE%'): Running...
+[208, 22:35:57] SELECT ClubName
+FROM registerIn
+WHERE StudentUIN IN (SELECT UIN 
+										 FROM studyof
+										 WHERE CourseID LIKE 'CSCE%'): Fetching...
+[208, 22:35:57] SELECT ClubName
+FROM registerIn
+WHERE StudentUIN IN (SELECT UIN 
+										 FROM studyof
+										 WHERE CourseID LIKE 'CSCE%'): 5 row(s) returned
+[209, 22:36:14] SELECT CourseID
+FROM studyof
+WHERE UIN IN(SELECT StudentUIN
+						 FROM registerIn
+						 WHERE ClubName='BasketBall')
+			AND CourseID LIKE 'MBS%': Running...
+[209, 22:36:14] SELECT CourseID
+FROM studyof
+WHERE UIN IN(SELECT StudentUIN
+						 FROM registerIn
+						 WHERE ClubName='BasketBall')
+			AND CourseID LIKE 'MBS%': Fetching...
+[209, 22:36:14] SELECT CourseID
+FROM studyof
+WHERE UIN IN(SELECT StudentUIN
+						 FROM registerIn
+						 WHERE ClubName='BasketBall')
+			AND CourseID LIKE 'MBS%': 0 row(s) returned
+[210, 22:36:26] SELECT ClubName, count(ClubName) as Sum_Member 
+FROM registerin 
+GROUP BY ClubName: Running...
+[210, 22:36:26] SELECT ClubName, count(ClubName) as Sum_Member 
+FROM registerin 
+GROUP BY ClubName: Fetching...
+[210, 22:36:26] SELECT ClubName, count(ClubName) as Sum_Member 
+FROM registerin 
+GROUP BY ClubName: 5 row(s) returned
+[211, 22:36:39] SELECT student.Name, student.UIN, professor.Name
+FROM student, professor
+WHERE( student.ProfUIN in (select T1.UIN from professor as T1, facultyof WHERE T1.UIN = facultyof.Prof_UIN AND facultyof.Department = 'ECEN')
+AND student.ProfUIN = professor.UIN): Running...
+[211, 22:36:39] SELECT student.Name, student.UIN, professor.Name
+FROM student, professor
+WHERE( student.ProfUIN in (select T1.UIN from professor as T1, facultyof WHERE T1.UIN = facultyof.Prof_UIN AND facultyof.Department = 'ECEN')
+AND student.ProfUIN = professor.UIN): Fetching...
+[211, 22:36:39] SELECT student.Name, student.UIN, professor.Name
+FROM student, professor
+WHERE( student.ProfUIN in (select T1.UIN from professor as T1, facultyof WHERE T1.UIN = facultyof.Prof_UIN AND facultyof.Department = 'ECEN')
+AND student.ProfUIN = professor.UIN): 2 row(s) returned
+[212, 22:36:50] (SELECT Name FROM student WHERE Gender = 'F' ORDER BY BirthYear LIMIT 10)
+UNION
+(SELECT Name FROM professor WHERE Nationality='China' AND Interest='Network' ORDER BY UIN LIMIT 10): Running...
+[212, 22:36:50] (SELECT Name FROM student WHERE Gender = 'F' ORDER BY BirthYear LIMIT 10)
+UNION
+(SELECT Name FROM professor WHERE Nationality='China' AND Interest='Network' ORDER BY UIN LIMIT 10): Fetching...
+[212, 22:36:50] (SELECT Name FROM student WHERE Gender = 'F' ORDER BY BirthYear LIMIT 10)
+UNION
+(SELECT Name FROM professor WHERE Nationality='China' AND Interest='Network' ORDER BY UIN LIMIT 10): 1 row(s) returned
+[213, 22:37:04] SELECT professor.UIN, professor.Name, professor.Title, facultyof.Department,facultyof.Salary
+FROM professor JOIN facultyof
+ON (professor.UIN = facultyof.Prof_UIN)
+where Department = 'CSCE'
+order by Salary desc: Running...
+[213, 22:37:04] SELECT professor.UIN, professor.Name, professor.Title, facultyof.Department,facultyof.Salary
+FROM professor JOIN facultyof
+ON (professor.UIN = facultyof.Prof_UIN)
+where Department = 'CSCE'
+order by Salary desc: Fetching...
+[213, 22:37:04] SELECT professor.UIN, professor.Name, professor.Title, facultyof.Department,facultyof.Salary
+FROM professor JOIN facultyof
+ON (professor.UIN = facultyof.Prof_UIN)
+where Department = 'CSCE'
+order by Salary desc: 2 row(s) returned
+[214, 22:37:13] select distinct e1.CourseID
+from (
+select student.Major, studyof.CourseID 
+from student join studyof
+on (student.UIN = studyof.UIN)
+where Major = 'ChE'
+) 
+as e1: Running...
+[214, 22:37:13] select distinct e1.CourseID
+from (
+select student.Major, studyof.CourseID 
+from student join studyof
+on (student.UIN = studyof.UIN)
+where Major = 'ChE'
+) 
+as e1: Fetching...
+[214, 22:37:13] select distinct e1.CourseID
+from (
+select student.Major, studyof.CourseID 
+from student join studyof
+on (student.UIN = studyof.UIN)
+where Major = 'ChE'
+) 
+as e1: 1 row(s) returned
+[215, 22:37:25] select ChairUIN from (select  ChairUIN, count(*) as Times from committeegroup GROUP BY ChairUIN) T1: Running...
+[215, 22:37:25] select ChairUIN from (select  ChairUIN, count(*) as Times from committeegroup GROUP BY ChairUIN) T1: Fetching...
+[215, 22:37:25] select ChairUIN from (select  ChairUIN, count(*) as Times from committeegroup GROUP BY ChairUIN) T1: 4 row(s) returned
+[216, 22:37:36] select StudUIN, sum(Cited) from student, Paper where UIN=StudUIN GROUP BY StudUIN: Running...
+[216, 22:37:36] select StudUIN, sum(Cited) from student, Paper where UIN=StudUIN GROUP BY StudUIN: Fetching...
+[216, 22:37:36] select StudUIN, sum(Cited) from student, Paper where UIN=StudUIN GROUP BY StudUIN: 4 row(s) returned
+
+
+
+
+
+——————————————————————————————————————————————————————————————————————————————————————
+
+
+
+
+
+
+
+
+Large Database:
+
+[130, 14:04:13] SELECT ClubName, count(ClubName) as Sum_Member FROM registerin GROUP BY ClubName: Running...
+[130, 14:04:13] SELECT ClubName, count(ClubName) as Sum_Member FROM registerin GROUP BY ClubName: Fetching...
+[130, 14:04:13] SELECT ClubName, count(ClubName) as Sum_Member FROM registerin GROUP BY ClubName: 8 row(s) returned
+[131, 14:05:03] SELECT CourseID
+FROM studyof
+WHERE UIN IN (SELECT UIN
+			  FROM student
+			  WHERE ProfUIN IN(SELECT UIN
+							   FROM professor
+							   WHERE Nationality='America')): Running...
+[131, 14:05:03] SELECT CourseID
+FROM studyof
+WHERE UIN IN (SELECT UIN
+			  FROM student
+			  WHERE ProfUIN IN(SELECT UIN
+							   FROM professor
+							   WHERE Nationality='America')): Fetching...
+[131, 14:05:03] SELECT CourseID
+FROM studyof
+WHERE UIN IN (SELECT UIN
+			  FROM student
+			  WHERE ProfUIN IN(SELECT UIN
+							   FROM professor
+							   WHERE Nationality='America')): 180 row(s) returned
+[132, 14:05:14] SELECT ClubName
+FROM registerIn
+WHERE StudentUIN IN (SELECT UIN 
+										 FROM studyof
+										 WHERE CourseID LIKE 'CSCE%'): Running...
+[132, 14:05:14] SELECT ClubName
+FROM registerIn
+WHERE StudentUIN IN (SELECT UIN 
+										 FROM studyof
+										 WHERE CourseID LIKE 'CSCE%'): Fetching...
+[132, 14:05:14] SELECT ClubName
+FROM registerIn
+WHERE StudentUIN IN (SELECT UIN 
+										 FROM studyof
+										 WHERE CourseID LIKE 'CSCE%'): 28 row(s) returned
+[133, 14:05:23] SELECT CourseID
+FROM studyof
+WHERE UIN IN(SELECT StudentUIN
+						 FROM registerIn
+						 WHERE ClubName='BasketBall')
+			AND CourseID LIKE 'MBS%': Running...
+[133, 14:05:23] SELECT CourseID
+FROM studyof
+WHERE UIN IN(SELECT StudentUIN
+						 FROM registerIn
+						 WHERE ClubName='BasketBall')
+			AND CourseID LIKE 'MBS%': Fetching...
+[133, 14:05:23] SELECT CourseID
+FROM studyof
+WHERE UIN IN(SELECT StudentUIN
+						 FROM registerIn
+						 WHERE ClubName='BasketBall')
+			AND CourseID LIKE 'MBS%': 0 row(s) returned
+[217, 22:39:28] SELECT student.Name, student.UIN, professor.Name
+FROM student, professor
+WHERE( student.ProfUIN in (select T1.UIN from professor as T1, facultyof WHERE T1.UIN = facultyof.Prof_UIN AND facultyof.Department = 'ECEN')
+AND student.ProfUIN = professor.UIN): Running...
+[217, 22:39:28] SELECT student.Name, student.UIN, professor.Name
+FROM student, professor
+WHERE( student.ProfUIN in (select T1.UIN from professor as T1, facultyof WHERE T1.UIN = facultyof.Prof_UIN AND facultyof.Department = 'ECEN')
+AND student.ProfUIN = professor.UIN): Fetching...
+[217, 22:39:28] SELECT student.Name, student.UIN, professor.Name
+FROM student, professor
+WHERE( student.ProfUIN in (select T1.UIN from professor as T1, facultyof WHERE T1.UIN = facultyof.Prof_UIN AND facultyof.Department = 'ECEN')
+AND student.ProfUIN = professor.UIN): 200 row(s) returned
+[218, 22:39:40] (SELECT Name FROM student WHERE Gender = 'F' ORDER BY BirthYear LIMIT 10)
+UNION
+(SELECT Name FROM professor WHERE Nationality='China' AND Interest='Network' ORDER BY UIN LIMIT 10): Running...
+[218, 22:39:40] (SELECT Name FROM student WHERE Gender = 'F' ORDER BY BirthYear LIMIT 10)
+UNION
+(SELECT Name FROM professor WHERE Nationality='China' AND Interest='Network' ORDER BY UIN LIMIT 10): Fetching...
+[218, 22:39:40] (SELECT Name FROM student WHERE Gender = 'F' ORDER BY BirthYear LIMIT 10)
+UNION
+(SELECT Name FROM professor WHERE Nationality='China' AND Interest='Network' ORDER BY UIN LIMIT 10): 13 row(s) returned
+[219, 22:39:50] SELECT professor.UIN, professor.Name, professor.Title, facultyof.Department,facultyof.Salary
+FROM professor JOIN facultyof
+ON (professor.UIN = facultyof.Prof_UIN)
+where Department = 'CSCE'
+order by Salary desc: Running...
+[219, 22:39:50] SELECT professor.UIN, professor.Name, professor.Title, facultyof.Department,facultyof.Salary
+FROM professor JOIN facultyof
+ON (professor.UIN = facultyof.Prof_UIN)
+where Department = 'CSCE'
+order by Salary desc: Fetching...
+[219, 22:39:50] SELECT professor.UIN, professor.Name, professor.Title, facultyof.Department,facultyof.Salary
+FROM professor JOIN facultyof
+ON (professor.UIN = facultyof.Prof_UIN)
+where Department = 'CSCE'
+order by Salary desc: 10 row(s) returned
+[220, 22:39:58] select distinct e1.CourseID
+from (
+select student.Major, studyof.CourseID 
+from student join studyof
+on (student.UIN = studyof.UIN)
+where Major = 'ChE'
+) 
+as e1: Running...
+[220, 22:39:58] select distinct e1.CourseID
+from (
+select student.Major, studyof.CourseID 
+from student join studyof
+on (student.UIN = studyof.UIN)
+where Major = 'ChE'
+) 
+as e1: Fetching...
+[220, 22:39:58] select distinct e1.CourseID
+from (
+select student.Major, studyof.CourseID 
+from student join studyof
+on (student.UIN = studyof.UIN)
+where Major = 'ChE'
+) 
+as e1: 10 row(s) returned
+[221, 22:40:09] select ChairUIN from (select  ChairUIN, count(*) as Times from committeegroup GROUP BY ChairUIN) T1: Running...
+[221, 22:40:09] select ChairUIN from (select  ChairUIN, count(*) as Times from committeegroup GROUP BY ChairUIN) T1: Fetching...
+[221, 22:40:09] select ChairUIN from (select  ChairUIN, count(*) as Times from committeegroup GROUP BY ChairUIN) T1: 50 row(s) returned
+[222, 22:40:19] select StudUIN, sum(Cited) from student, Paper where UIN=StudUIN GROUP BY StudUIN: Running...
+[222, 22:40:19] select StudUIN, sum(Cited) from student, Paper where UIN=StudUIN GROUP BY StudUIN: Fetching...
+[222, 22:40:19] select StudUIN, sum(Cited) from student, Paper where UIN=StudUIN GROUP BY StudUIN: 4 row(s) returned

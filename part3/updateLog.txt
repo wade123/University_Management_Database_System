@@ -1,0 +1,63 @@
+Small Database:
+
+[223, 22:43:17] INSERT INTO professor 
+VALUES(990, 'Kahatri', 'Associate Professor', 'America', 'Network', 9790015236, 'www.timkahatri.tamu.edu'): Running...
+[223, 22:43:17] INSERT INTO professor 
+VALUES(990, 'Kahatri', 'Associate Professor', 'America', 'Network', 9790015236, 'www.timkahatri.tamu.edu'): 1 row(s) affected
+[224, 22:45:31] UPDATE committeegroup SET CochairUIN =904 WHERE ChairUIN= (select min(ChairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T1) AND CochairUIN = (select min(CochairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T2): Running...
+[224, 22:45:31] UPDATE committeegroup SET CochairUIN =904 WHERE ChairUIN= (select min(ChairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T1) AND CochairUIN = (select min(CochairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T2): 0 row(s) affected
+Rows matched: 0  Changed: 0  Warnings: 0
+[225, 22:45:45] UPDATE student
+SET Name='Jim',BirthYear=1991
+WHERE UIN=8001: Running...
+[225, 22:45:45] UPDATE student
+SET Name='Jim',BirthYear=1991
+WHERE UIN=8001: 1 row(s) affected
+Rows matched: 1  Changed: 1  Warnings: 0
+[228, 22:49:29] DELETE FROM student
+WHERE UIN=8001: Running...
+[228, 22:49:29] DELETE FROM student
+WHERE UIN=8001: 1 row(s) affected
+[235, 22:54:05] DELETE FROM professor
+WHERE UIN=801: Running...
+[235, 22:54:05] DELETE FROM professor
+WHERE UIN=801: 0 row(s) affected
+[237, 22:59:54] INSERT INTO student
+VALUES(8090, 'Tom', 1990, 'M', 9792129121,'ECEN',901): Running...
+[237, 22:59:54] INSERT INTO student
+VALUES(8090, 'Tom', 1990, 'M', 9792129121,'ECEN',901): 1 row(s) affected
+
+
+——————————————————————————————————————————————————————————————————————————————————————
+
+
+
+
+Large Database:
+
+[238, 22:49:17] INSERT INTO professor 
+VALUES(990, 'Kahatri', 'Associate Professor', 'America', 'Network', 9790015236, 'www.timkahatri.tamu.edu'): Running...
+[238, 22:49:17] INSERT INTO professor 
+VALUES(990, 'Kahatri', 'Associate Professor', 'America', 'Network', 9790015236, 'www.timkahatri.tamu.edu'): 1 row(s) affected
+[241, 22:50:31] UPDATE committeegroup SET CochairUIN =904 WHERE ChairUIN= (select min(ChairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T1) AND CochairUIN = (select min(CochairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T2): Running...
+[241, 22:50:31] UPDATE committeegroup SET CochairUIN =904 WHERE ChairUIN= (select min(ChairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T1) AND CochairUIN = (select min(CochairUIN) from (select * from committeegroup Where ChairUIN=CochairUIN) as T2): 0 row(s) affected
+Rows matched: 0  Changed: 0  Warnings: 0
+[245, 22:53:45] UPDATE student
+SET Name='Jim',BirthYear=1991
+WHERE UIN=8001: Running...
+[245, 22:53:45] UPDATE student
+SET Name='Jim',BirthYear=1991
+WHERE UIN=8001: 1 row(s) affected
+Rows matched: 1  Changed: 1  Warnings: 0
+[247, 22:59:49] DELETE FROM student
+WHERE UIN=8001: Running...
+[247, 22:59:49] DELETE FROM student
+WHERE UIN=8001: 1 row(s) affected
+[249, 23:01:09] DELETE FROM professor
+WHERE UIN=801: Running...
+[249, 23:01:09] DELETE FROM professor
+WHERE UIN=801: 0 row(s) affected
+[251, 23:02:21] INSERT INTO student
+VALUES(8090, 'Tom', 1990, 'M', 9792129121,'ECEN',901): Running...
+[251, 23:02:21] INSERT INTO student
+VALUES(8090, 'Tom', 1990, 'M', 9792129121,'ECEN',901): 1 row(s) affected
